@@ -1,16 +1,20 @@
 const { Model, DataTypes } = require("sequelize");
-
 const sequelize = require("../config/connection.js");
+
+// Do I need to import `Product` to create the One-To-Many relationship? https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships
+const Product = require("./Product");
+
 
 class Category extends Model {}
 
+// Category.init(
 Category.init(
 	{
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
-      autoIncrement: true
+			autoIncrement: true,
 		},
 		category_name: {
 			type: DataTypes.STRING,
@@ -26,4 +30,7 @@ Category.init(
 	}
 );
 
+Category.hasMany(Product);
+
+// module.exports = Category;
 module.exports = Category;
