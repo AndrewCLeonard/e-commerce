@@ -89,11 +89,34 @@ GIVEN a functional Express.js API...
 
 ### dependecies
 
-    "dotenv": "8.2.0",
-    "express": "4.17.1",
-    "mysql2": "2.1.0",
-    "sequelize": "5.21.7"
+| dependency | description                                                                                                                                                                                                                                                            |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| dotenv     | <ul><li>`.env` file loads environment variables into Node's `process.env`, a property that returns an object conaining the user environment</li><li>allows devs to store user environment configuration (passwords, secrets, keys, etc.) separate from code </li></ul> |
+| express    |                                                                                                                                                                                                                                                                        |
+| mysql2     |                                                                                                                                                                                                                                                                        |
+| sequelize  | <ul><li>manage objects using js, and sequelize translates it into the database schema and queries using SQL. </li><li>sits between server's API endpoitns and the SQL database to translate and normalize data between JavaScript and SQL.</li></ul>                   |
+| bcrypt     | <ul><li>password hashing</li></ul>                                                                                                                                                                                                                                     |
 
 ### dev dependencies
 
-    "nodemon": "^2.0.3"
+| dev dependency | description |
+| -------------- | ----------- |
+| nodemon        |             |
+
+## Lessons Learned
+
+-   Configure the Sequelize ORM in a Node.js application.
+
+    -   Set up the application to use Sequelize to manage SQL data.
+    -   Use environment variables to protect sensitive data.
+    -   Create a user table using Sequelize models.
+    -   Create all of the server endpoints using RESTful API standards to work with the User model’s data.
+
+-   Create models for categories, products, and tags in a relational database and a through table that will connect the product and tag models.
+-   Define and implement CRUD methods, using Sequelize to interact with your models in each API endpoint through proper RESTful commands (GET, POST, PUT, DELETE).
+-   Create and implement Sequelize associations to join tables.
+-   Use environment variables to protect sensitive data, such as your MySQL username and password.
+
+### Object-Relational Mapping (ORM)
+
+-   convert data between incompatible type systems using OOP principles
