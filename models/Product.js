@@ -54,5 +54,5 @@ Product.init(
 	}
 );
 
-Product.hasOne(Category);
+// Product.hasOne(Category);
 module.exports = Product;
