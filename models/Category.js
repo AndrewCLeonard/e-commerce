@@ -30,7 +30,4 @@ Category.init(
 	}
 );
 
-Category.hasOne(Product);
-Product.belongsTo(Category);
-// module.exports = Category;
 module.exports = Category;
