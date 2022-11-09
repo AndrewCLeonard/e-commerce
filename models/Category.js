@@ -5,8 +5,6 @@ const sequelize = require("../config/connection.js");
 const Product = require("./Product");
 class Category extends Model {}
 
-console.log(sequelize.models);
-
 // Category.init(
 Category.init(
 	{
