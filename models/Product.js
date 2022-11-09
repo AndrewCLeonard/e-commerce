@@ -2,7 +2,7 @@
 const {
 	Sequelize,
 	DataTypes,
-	// Model,
+	Model,
 } = require("sequelize");
 
 // const sequelize = new Sequelize("sqlite::memory:");
@@ -10,48 +10,46 @@ const {
 // import our database connection from config.js
 const sequelize = require("../config/connection");
 
-// TO DO ???
-const { Category } = require("./Category.js");
-
 // Initialize Product model (table) by extending off Sequelize's Model class
-// class Product extends Model {}
+class Product extends Model {}
 
 // set up fields and rules for Product model
+/**
 
-const Product = sequelize.define(
-	"Product",
-	{
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-		},
-		product_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		price: {
-			type: DataTypes.DECIMAL,
-			allowNull: false,
-			validate: {
-				isDecimal: true,
-				msg: "Must be a decimal",
+ const Product = sequelize.define(
+	 "Product",
+	 {
+		 id: {
+			 type: DataTypes.INTEGER,
+			 allowNull: false,
+			 primaryKey: true,
+			 autoIncrement: true,
 			},
-		},
-		stock: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			defaultValue: 10,
-			validate: {
-				isInt: true,
-				msg: "Must be an integer",
+			product_name: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
-		},
-		category_id: {
-			type: DataTypes.INTEGER,
+			price: {
+				type: DataTypes.DECIMAL,
+				allowNull: false,
+				validate: {
+					isDecimal: true,
+					msg: "Must be a decimal",
+				},
+			},
+			stock: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				defaultValue: 10,
+				validate: {
+					isInt: true,
+					msg: "Must be an integer",
+				},
+			},
+			category_id: {
+				type: DataTypes.INTEGER,
 			references: {
-				model: "Category",
+				model: "category",
 				key: "id",
 			},
 			// TO DO: references category model's ID
@@ -64,12 +62,12 @@ const Product = sequelize.define(
 		underscored: true,
 		modelName: "product",
 	}
-);
-/** 
-Product.init(
-	{
-		id: {
-			type: DataTypes.INTEGER,
+	);
+	*/
+	 Product.init(
+		 {
+			 id: {
+				 type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true,
@@ -108,7 +106,5 @@ Product.init(
 		modelName: "product",
 	}
 );
-*/
 
-// Product.hasOne(Category);
 module.exports = Product;
