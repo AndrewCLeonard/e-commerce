@@ -86,12 +86,29 @@ router.post("/", (req, res) => {
 
 // update product
 router.put("/:id", (req, res) => {
-	// update product data
 	Product.update(req.body, {
+		// individualHooks: true,
 		where: {
 			id: req.params.id,
 		},
 	})
+		// .then((dbProductData) => {
+		// 	if (!dbProductData[0]) {
+		// 		res.status(404).json({ message: "No product found with this ID" });
+		// 		return;
+		// 	}
+		// 	// res.json(dbProductData);
+		// })
+		// .catch((err) => {
+		// 	console.log(err);
+		// 	res.status(500).json(err);
+		// });
+		// update product data
+		// Product.update(req.body, {
+		// 	where: {
+		// 		id: req.params.id,
+		// 	},
+		// })
 		.then((product) => {
 			// find all associated tags from ProductTag
 			return ProductTag.findAll({ where: { product_id: req.params.id } });
