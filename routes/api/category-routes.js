@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 			{
 				model: Product,
 				attributes: ["product_name"],
-				required: true,
+				required: false,
 			},
 		],
 	})
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
 			{
 				model: Product,
 				attributes: ["product_name"],
-				required: true,
+				required: false,
 			},
 		],
 	})
