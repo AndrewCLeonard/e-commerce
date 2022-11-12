@@ -92,23 +92,18 @@ router.put("/:id", (req, res) => {
 			id: req.params.id,
 		},
 	})
-		// .then((dbProductData) => {
-		// 	if (!dbProductData[0]) {
-		// 		res.status(404).json({ message: "No product found with this ID" });
-		// 		return;
-		// 	}
-		// 	// res.json(dbProductData);
-		// })
-		// .catch((err) => {
-		// 	console.log(err);
-		// 	res.status(500).json(err);
-		// });
+		.then((dbProductData) => {
+			if (!dbProductData) {
+				res.status(404).json({ message: "No product found with this ID" });
+				return;
+			}
+			// res.json(dbProductData);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).json(err);
+		})
 		// update product data
-		// Product.update(req.body, {
-		// 	where: {
-		// 		id: req.params.id,
-		// 	},
-		// })
 		.then((product) => {
 			// find all associated tags from ProductTag
 			return ProductTag.findAll({ where: { product_id: req.params.id } });
