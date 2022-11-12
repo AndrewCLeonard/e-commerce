@@ -58,23 +58,24 @@ router.post("/", (req, res) => {
 
 // update a tag's name by its `id` value
 router.put("/:id", (req, res) => {
+	// pass in req.body instead to only update what's passed through
 	Tag.update(req.body, {
-		// individualHooks: true,
+		individualHooks: true,
 		where: {
 			id: req.params.id,
-		}
-			.then((dbTagData) => {
-				if (!dbTagData) {
-					res.status(404).json({ message: "No Tag found with this ID." });
-					return;
-				}
-				res.json(dbTagData);
-			})
-			.catch((err) => {
-				console.error(err);
-				res.status(500).json(err);
-			}),
-	});
+		},
+	})
+		.then((dbTagData) => {
+			if (!dbTagData) {
+				res.status(404).json({ message: "No Tag found with this ID." });
+				return;
+			}
+			res.json(dbTagData);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).json(err);
+		});
 });
 
 router.delete("/:id", (req, res) => {
